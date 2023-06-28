@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 
 
-class User(object):
+class User:
     def __init__(self, user, password):
         self.user = user
         self.password = password
