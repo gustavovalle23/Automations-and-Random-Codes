@@ -1,0 +1,11 @@
+{
+  "name": "webscrapping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "chromedriver": "^114.0.2",
+    "dotenv": "^16.3.1",
+    "selenium-webdriver": "^4.10.0"
+  }
+}
