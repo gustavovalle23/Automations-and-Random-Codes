@@ -27,23 +27,24 @@ class PokerHand(Enum):
     ROYAL_FLUSH = auto()
 
 
-def is_straight_poker(combination):
-    values = {
-        "2": 2,
-        "3": 3,
-        "4": 4,
-        "5": 5,
-        "6": 6,
-        "7": 7,
-        "8": 8,
-        "9": 9,
-        "10": 10,
-        "J": 11,
-        "Q": 12,
-        "K": 13,
-        "A": 14,
-    }
+values = {
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "J": 11,
+    "Q": 12,
+    "K": 13,
+    "A": 14,
+}
 
+
+def is_straight_poker(combination):
     sorted_combination = sorted(combination, key=lambda x: values[x])
 
     for i in range(len(sorted_combination) - 1):
@@ -70,24 +71,46 @@ def simulate_hand(cards):
         return PokerHand.FOUR_OF_A_KIND
 
     suits = [card[1] for card in cards]
-    if len(set(suits)) == 1:
+
+    is_straight = is_straight_poker([card[0] for card in cards])
+    is_flush = len(set(suits)) == 1
+
+    if is_straight and is_flush:
+        if sorted([card[0] for card in cards], key=lambda x: values[x]) == [
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+        ]:
+            return PokerHand.ROYAL_FLUSH
+        return PokerHand.STRAIGHT_FLUSH
+
+    if is_flush:
         return PokerHand.FLUSH
 
-    if is_straight_poker([card[0] for card in cards]):
+    if is_straight:
         return PokerHand.STRAIGHT
 
-
-hand_counts = {hand: 0 for hand in COMBINATIONS}
+    return PokerHand.HIGH_CARD
 
 
 # Ouro, Copas, Espadas, Paus
-# cards = [
-#     ("10", "Ouro"),
-#     ("9" "Paus"),
-#     ("8", "Copas"),
-#     ("7", "Espadas"),
-#     ("6", "Ouro"),
-# ]  # straight
+cards = [
+    ("10", "Ouro"),
+    ("9" "Paus"),
+    ("8", "Copas"),
+    ("7", "Espadas"),
+    ("6", "Ouro"),
+]  # straight
+
+cards = [
+    ("10", "Ouro"),
+    ("9", "Ouro"),
+    ("7", "Ouro"),
+    ("6", "Ouro"),
+    ("3", "Ouro"),
+]  # flush
 
 cards = [
     ("10", "Ouro"),
@@ -95,6 +118,15 @@ cards = [
     ("8", "Ouro"),
     ("7", "Ouro"),
     ("6", "Ouro"),
-]  # flush
+]  # straight flush
+
+
+cards = [
+    ("A", "Ouro"),
+    ("K", "Ouro"),
+    ("Q", "Ouro"),
+    ("J", "Ouro"),
+    ("10", "Ouro"),
+]  # royal flush
 
 print(simulate_hand(cards))
