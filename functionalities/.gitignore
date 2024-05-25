@@ -1,1 +1,5 @@
 youtube_urls.txt
+.ipynb*
+.virtual*
+*csv
+credentials.txt
