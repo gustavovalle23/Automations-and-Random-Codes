@@ -147,3 +147,22 @@ today_data.to_csv(f'15min_with_signals_and_profit.csv', index=False)
 # Display the result
 print(f"Total Profit: {total_profit}")
 print(today_data[['Datetime', 'Close', '5_MA', '20_MA', 'RSI', 'Signal', 'Profit']])
+
+
+
+# Investimento - Ganho Diario - Gnaho mensal
+# 3000         - 45     - 990
+# 3990         - 59.85  - 1316
+# 5306         - 79.59  - 1750
+# 7056         - 105.84 - 2328
+# 9384         - 140.76 - 3096
+# 12480        - 187.21 - 4118
+# 16598        - 248.98 - 5477
+# 22075        - ...    - 7284
+# 29359        - ...    - 9688
+# 39047        - ...    - 12885
+# 51932        - ...    - 17131
+
+
+# daaassssss
+# Notificacao  dentro do app - Local push

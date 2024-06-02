@@ -9,8 +9,7 @@ if not mt5.initialize():
     print("initialize() failed")
     mt5.shutdown()
 
-# Define the ticker symbol and time frame
-ticker = 'USDJPY'  # Note: You need to ensure that this symbol is available in your MT5 market watch
+ticker = 'USDJPY'
 timeframe = mt5.TIMEFRAME_H1  # 15-minute interval
 
 while True:
